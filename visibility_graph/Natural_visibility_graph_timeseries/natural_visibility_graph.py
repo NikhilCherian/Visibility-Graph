@@ -84,11 +84,15 @@ def nat_visibility(tseries):
 def node_graph(tup):
     h=nx.Graph()
     h.add_edges_from(tup)
-    print "hi"
     print "edges:" ,h.edges()
     #%matplotlib inline
     BLUE="#99CCFF"
     nx.draw(h, node_color=BLUE,with_labels=True)
+    print "Degree Distribution:",h.degree()
+    print "Degree Centrality:",nx.degree_centrality(h)
+    print "Betweenness Centrality : ",nx.betweenness_centrality(h)
+    print "Betweenness Centrality Non-Normalized : ",nx.betweenness_centrality(h, normalized=False)
+    print "Closeness Centrality:", nx.closeness_centrality(h)
     pyplot.show()
 
 
@@ -106,6 +110,6 @@ tseries =tup_series(tup)
 
 
 li=nat_visibility(tseries)
-print "li is :" , li
+
 node_graph(li);
 #print tup[0],tup[1]
