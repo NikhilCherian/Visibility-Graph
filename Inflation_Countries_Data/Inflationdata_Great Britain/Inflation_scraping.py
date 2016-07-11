@@ -4,12 +4,12 @@ import re
 import csv
 from bs4 import BeautifulSoup
 
-f=open('F:\git\Inflation_Countries_Data\output2.csv','wb')
-fnor=open('F:\git\Inflation_Countries_Data\outputnor.csv','wb')
+favg=open('F:\git\Inflation_Countries_Data\Inflationdata_Great Britain\Averageinflation_GreatBritain.csv','wb')
+fannu=open('F:\git\Inflation_Countries_Data\Inflationdata_Great Britain\Annualinflation_GreatBritain.csv','wb')
 
 
 
-fl=open("F:\git\Inflation_Countries_Data\htmldoc.html",'r')
+fl=open("F:\git\Inflation_Countries_Data\Inflationdata_Great Britain\htmldoc_Inflation_GreatBritain.html",'r')
 
 soup = BeautifulSoup(fl,'html.parser')
 #print soup.prettify()[0:1000]
@@ -34,7 +34,7 @@ for row in tablestats.findAll('tr',{'class': 'tabledata1'}):
     if re.search("Average CPI inflation",x):
         print "Average"
         year1=column[0].getText()
-        y1=re.sub('\CPI India', '', year1)
+        y1=re.sub('\CPI Great Britain', '', year1)
         CPI= column[1].getText()
         c1=re.sub('\%', '', CPI)
         print y1,c1
@@ -44,7 +44,7 @@ for row in tablestats.findAll('tr',{'class': 'tabledata1'}):
             continue
 
         year2=column[3].getText()
-        y2=re.sub('\CPI India', '', year2)
+        y2=re.sub('\CPI Great Britain', '', year2)
         CPI2=column[4].getText()
         c2=re.sub('\%', '', CPI2)
         print y2, c2
@@ -56,7 +56,7 @@ for row in tablestats.findAll('tr',{'class': 'tabledata1'}):
     else:
         print "Not Average"
         year1=column[0].getText()
-        y1=re.sub('\CPI India', '', year1)
+        y1=re.sub('\CPI Great Britain', '', year1)
         CPI= column[1].getText()
         c1=re.sub('\%', '', CPI)
         print y1,c1
@@ -66,7 +66,7 @@ for row in tablestats.findAll('tr',{'class': 'tabledata1'}):
             continue
 
         year2=column[3].getText()
-        y2=re.sub('\CPI India', '', year2)
+        y2=re.sub('\CPI Great Britain', '', year2)
         CPI2=column[4].getText()
         c2=re.sub('\%', '', CPI2)
         print y2, c2
@@ -83,7 +83,7 @@ for row in tablestats.findAll('tr',{'class': 'tabledata2'}):
     if re.search("Average CPI inflation",x):
         print "Average"
         year1=column[0].getText()
-        y1=re.sub('\CPI India', '', year1)
+        y1=re.sub('\CPI Great Britain', '', year1)
         CPI= column[1].getText()
         c1=re.sub('\%', '', CPI)
         print y1,c1
@@ -93,7 +93,7 @@ for row in tablestats.findAll('tr',{'class': 'tabledata2'}):
             continue
 
         year2=column[3].getText()
-        y2=re.sub('\CPI India', '', year2)
+        y2=re.sub('\CPI Great Britain', '', year2)
         CPI2=column[4].getText()
         c2=re.sub('\%', '', CPI2)
         print y2, c2
@@ -105,7 +105,7 @@ for row in tablestats.findAll('tr',{'class': 'tabledata2'}):
     else:
         print "Not Average"
         year1=column[0].getText()
-        y1=re.sub('\CPI India', '', year1)
+        y1=re.sub('\CPI Great Britain', '', year1)
         CPI= column[1].getText()
         c1=re.sub('\%', '', CPI)
         print y1,c1
@@ -115,7 +115,7 @@ for row in tablestats.findAll('tr',{'class': 'tabledata2'}):
             continue
 
         year2=column[3].getText()
-        y2=re.sub('\CPI India', '', year2)
+        y2=re.sub('\CPI Great Britain', '', year2)
         CPI2=column[4].getText()
         c2=re.sub('\%', '', CPI2)
         print y2, c2
@@ -143,14 +143,14 @@ litavg.sort()
 litnor.sort()
 
 for x, y in litavg :
-    print >> f, x, y
+    print >> favg, x, y
 
 for x,y in litnor:
-    print >> fnor, x, y
+    print >> fannu, x, y
 
 
-f.close
-fnor.close
+favg.close
+fannu.close
     #print (column[0].text)
 
     #print row

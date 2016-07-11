@@ -11,7 +11,7 @@ tseries=[]
 
 
 currentdirpath =os.getcwd()
-filename =' outputnor.csv'
+filename =' Averageinflation_GreatBritain.csv'
 file_path=os.path.join(currentdirpath, filename) #file_path to open
 
 def get_file_path(filename):
@@ -21,7 +21,7 @@ def get_file_path(filename):
     return file_path
 
 
-path= get_file_path('outputnor.csv')
+path= get_file_path('Averageinflation_GreatBritain.csv')
 print path
 
 
@@ -87,12 +87,13 @@ def node_graph(tup):
     print "edges:" ,h.edges()
     #%matplotlib inline
     BLUE="#99CCFF"
-    nx.draw(h, node_color=BLUE,with_labels=True)
+    nx.draw_spring(h, node_color=BLUE,with_labels=True)
     print "Degree Distribution:",h.degree()
     print "Degree Centrality:",nx.degree_centrality(h)
     print "Betweenness Centrality : ",nx.betweenness_centrality(h)
     print "Betweenness Centrality Non-Normalized : ",nx.betweenness_centrality(h, normalized=False)
     print "Closeness Centrality:", nx.closeness_centrality(h)
+
     pyplot.show()
 
 
