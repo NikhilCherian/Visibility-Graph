@@ -5,6 +5,7 @@ import string
 import networkx as nx
 import matplotlib
 from matplotlib import pyplot
+from matplotlib import pylab as plt
 #from __future__ import division
 tseries=[]
 
@@ -83,17 +84,24 @@ def nat_visibility(tseries):
 
 def node_graph(tup):
     h=nx.Graph()
+    pos=nx.spring_layout(h)
+
+
     h.add_edges_from(tup)
     print "edges:" ,h.edges()
     #%matplotlib inline
-    BLUE="#99CCFF"
-    nx.draw(h, node_color=BLUE,with_labels=True)
+    #BLUE="#99CCFF"
+    #t=len(h.nodes())
+
+    nx.draw(h, node_color='#A0CBE2',with_labels=True)
+
     print "Degree Distribution:",h.degree()
     print "Degree Centrality:",nx.degree_centrality(h)
     print "Betweenness Centrality : ",nx.betweenness_centrality(h)
     print "Betweenness Centrality Non-Normalized : ",nx.betweenness_centrality(h, normalized=False)
     print "Closeness Centrality:", nx.closeness_centrality(h)
-    pyplot.show()
+    plt.title('Great Britain')
+    plt.show()
 
 
 def tup_series(tup):
@@ -111,5 +119,5 @@ tseries =tup_series(tup)
 
 li=nat_visibility(tseries)
 
-node_graph(li);
+node_graph(li)
 #print tup[0],tup[1]
